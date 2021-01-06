@@ -7,7 +7,7 @@ import type { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-import i18n from '../../../i18n';
+import { i18n } from '../../../i18n';
 import config from '../../config';
 import { getSetting, setEmail, setName } from '../../settings';
 

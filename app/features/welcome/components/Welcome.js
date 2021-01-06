@@ -21,6 +21,12 @@ import { createConferenceObjectFromURL } from '../../utils';
 
 import { Body, FieldWrapper, Form, Header, Label, Wrapper } from '../styled';
 
+import {
+    CALENDAR_TYPE,
+    signIn
+} from '../../calendar-sync';
+import { APP_LINK_SCHEME } from '../../base/util';
+
 type Props = {
 
     /**
@@ -120,6 +126,21 @@ class Welcome extends Component<Props, State> {
         this.props.dispatch(startOnboarding('welcome-page'));
 
         this._updateRoomname();
+
+        const receiveMessage = (evt) => {
+             if(evt.data.syncStoreReq) {
+                // Send the 'features/app-auth' data stored in electron window,
+                // down to the requesting iframe
+                console.log('==> Source window: ', evt.source);
+                evt.source.postMessage({ appAuth: JSON.parse(window.localStorage.getItem('features/app-auth')) }, '*');
+             }
+             else if(evt.data.googleLogin) {
+                APP.store.dispatch(signIn(CALENDAR_TYPE.GOOGLE));
+             }
+             
+        }
+
+        window.addEventListener('message', receiveMessage, false);
     }
 
     /**

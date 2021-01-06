@@ -24,7 +24,7 @@ export default {
     /**
      * The default server URL of Jitsi Meet Deployment that will be used.
      */
-    defaultServerURL: 'https://meet.jit.si',
+    defaultServerURL: 'https://dev-jifmeet.saal.ai',
 
     /**
      * The default server Timeout in seconds.
@@ -44,5 +44,29 @@ export default {
     /**
      * The URL of Terms and Conditions Page.
      */
-    termsAndConditionsURL: 'https://jitsi.org/meet/terms'
+    termsAndConditionsURL: 'https://jitsi.org/meet/terms',
+
+    config: {
+        unauthenticatedIRP: "/irp",
+        authenticatedIRP: "/authenticate-irp",
+        conferenceManager: "/blync-mgmt",
+
+
+        // ==== blync-mgmt Endpoints ====
+        conferenceEP: "/auth/api/v1/conferences",
+        unauthConferenceEP: "/unauth/api/v1/conferences",
+        verifySecretEP: "/unauth/api/v1/conferences/validatesecret",
+        jidEP: "/auth/api/v1/jid",
+        unauthParticipantsEP: "/unauth/api/v1/participants",
+        authParticipantsEP: "/auth/api/v1/participants",
+
+
+        // IRP Endpoints
+        signInEP: '/api/users/sign-in',
+        socialSignInEP: '/api/users/social-sign-in',
+        refreshToken: '/api/users/accesstoken/refresh'
+
+    }
 };
+
+

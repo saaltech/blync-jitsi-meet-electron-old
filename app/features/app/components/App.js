@@ -7,6 +7,8 @@ import { Route, Switch } from 'react-router';
 import { connect } from 'react-redux';
 import { ConnectedRouter as Router, push } from 'react-router-redux';
 
+import logger from '../logger';
+
 import { Conference } from '../../conference';
 import config from '../../config';
 import { history } from '../../router';
@@ -27,6 +29,8 @@ class App extends Component<*> {
 
         document.title = config.appName;
 
+        
+
         this._listenOnProtocolMessages
             = this._listenOnProtocolMessages.bind(this);
     }
@@ -37,11 +41,13 @@ class App extends Component<*> {
      * @returns {void}
      */
     componentDidMount() {
+
         // start listening on this events
         window.jitsiNodeAPI.ipc.on('protocol-data-msg', this._listenOnProtocolMessages);
 
         // send notification to main process
         window.jitsiNodeAPI.ipc.send('renderer-ready');
+        
     }
 
     /**

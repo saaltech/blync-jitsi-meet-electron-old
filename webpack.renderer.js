@@ -28,7 +28,9 @@ module.exports = {
         noParse: /external_api\\.js/,
         rules: [
             {
-                exclude: /node_modules(?!(\/|\\)js-utils)/,
+                exclude: [
+                    new RegExp(`${__dirname}/node_modules/(?!@jitsi/js-utils)`)
+                ],
                 loader: 'babel-loader',
                 options: {
                     babelrc: false,
@@ -48,7 +50,9 @@ module.exports = {
                     plugins: [
                         require.resolve('@babel/plugin-transform-flow-strip-types'),
                         require.resolve('@babel/plugin-proposal-class-properties'),
-                        require.resolve('@babel/plugin-proposal-export-namespace-from')
+                        require.resolve('@babel/plugin-proposal-export-namespace-from'),
+                        require.resolve('@babel/plugin-proposal-nullish-coalescing-operator'),
+                        require.resolve('@babel/plugin-proposal-optional-chaining')
                     ]
                 },
                 test: /\.js$/
@@ -82,6 +86,13 @@ module.exports = {
     resolve: {
         modules: [
             path.resolve('./node_modules')
+        ],
+        extensions: [
+            '.web.js',
+
+            // Webpack defaults:
+            '.js',
+            '.json'
         ]
     }
 };
