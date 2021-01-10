@@ -16,8 +16,10 @@ import { PersistGate } from 'redux-persist/integration/react';
 import './features/base/jitsi-local-storage/setup';
 
 // Register middlewares and reducers.
-import './features/calendar-sync/middleware';
+import './features/router/middleware';
+import './features/router/reducer';
 import './features/app-auth/reducer';
+import './features/calendar-sync/middleware';
 import './features/calendar-sync/reducer';
 import './features/google-api/reducer';
 

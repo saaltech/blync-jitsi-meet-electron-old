@@ -1,5 +1,6 @@
 // @flow
 
 import { routerReducer } from 'react-router-redux';
+import { ReducerRegistry } from '../redux';
 
-export default routerReducer;
+ReducerRegistry.register('router', routerReducer)

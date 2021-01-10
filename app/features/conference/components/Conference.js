@@ -12,6 +12,7 @@ import config from '../../config';
 import { getSetting, setEmail, setName } from '../../settings';
 
 import { conferenceEnded, conferenceJoined } from '../actions';
+import { resolveAppLogin } from '../../app-auth/actions';
 import JitsiMeetExternalAPI from '../external_api';
 import { LoadingIndicator, Wrapper } from '../styled';
 
@@ -113,6 +114,7 @@ class Conference extends Component<Props, State> {
 
         this._onIframeLoad = this._onIframeLoad.bind(this);
         this._onVideoConferenceEnded = this._onVideoConferenceEnded.bind(this);
+        this._onResolveAppLogin = this._onResolveAppLogin.bind(this);
     }
 
     /**
@@ -230,6 +232,7 @@ class Conference extends Component<Props, State> {
 
         this._api.on('suspendDetected', this._onVideoConferenceEnded);
         this._api.on('readyToClose', this._onVideoConferenceEnded);
+        this._api.on('resolveAppLogin', this._onResolveAppLogin);
         this._api.on('videoConferenceJoined',
             (conferenceInfo: Object) => {
                 this.props.dispatch(conferenceJoined(this._conference));
@@ -307,6 +310,19 @@ class Conference extends Component<Props, State> {
     _onVideoConferenceEnded(event: Event) {
         this.props.dispatch(conferenceEnded(this._conference));
         this._navigateToHome(event);
+    }
+
+    _onResolveAppLogin: (*) => void;
+
+    /**
+     * Dispatches resolveAppLogin to log the user in as the user log into the JifMeet app.
+     *
+     * @param {Object} data - Event by which the function is called.
+     * @returns {void}
+     * @private
+     */
+    _onResolveAppLogin(data: Object) {
+        this.props.dispatch(resolveAppLogin(data.loginData));
     }
 
     /**
@@ -402,13 +418,10 @@ class Conference extends Component<Props, State> {
  */
 function _mapStateToProps(state: Object) {
     return {
-        _alwaysOnTopWindowEnabled: getSetting(state, 'alwaysOnTopWindowEnabled', true),
-        _email: state.settings.email,
-        _name: state.settings.name,
-        _serverURL: state.settings.serverURL,
-        _serverTimeout: state.settings.serverTimeout,
-        _startWithAudioMuted: state.settings.startWithAudioMuted,
-        _startWithVideoMuted: state.settings.startWithVideoMuted
+        _alwaysOnTopWindowEnabled: true,
+        _email: state.settings?.email,
+        _name: state.settings?.name,
+        _serverURL: state.settings?.serverURL,
     };
 }
 

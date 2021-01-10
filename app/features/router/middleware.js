@@ -1,7 +1,8 @@
 // @flow
 
 import { routerMiddleware } from 'react-router-redux';
+import MiddlewareRegistry from '../redux/MiddlewareRegistry';
 
 import history from './history';
 
-export default routerMiddleware(history);
+MiddlewareRegistry.register(routerMiddleware(history));
