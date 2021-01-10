@@ -3,16 +3,10 @@
 import React, { useState, useEffect } from 'react';
 
 import { Avatar } from '../../base/avatar';
-import {
-    Icon,
-    IconMenuDown,
-    IconMenuUp,
-    IconLogout
-} from '../../base/icons';
+import { RiLogoutCircleRLine } from 'react-icons/ri';
 import { connect } from 'react-redux';
 import { signOut } from '../../google-api';
 import googleApi from '../../google-api/googleApi';
-import useRequest from '../../hooks/use-request';
 import { resolveAppLogout } from '../actions';
 
 /**
@@ -60,18 +54,16 @@ function Profile(props) {
             {
                 showMenu
             && <div className = 'menuIcon'>
-                {/* {
-                    !menuExpanded
-                        ? <Icon src = { IconMenuDown } />
-                        : <Icon src = { IconMenuUp } />
-                } */}
                 {
                     menuExpanded
                     && <ul
                         className = 'profileMenu'
                         ref = { wrapperRef }>
                         <li onClick = { logout }>
-                            <Icon src = { IconLogout } />
+                            <div className={'jifmeet-icon'}>
+                                <RiLogoutCircleRLine size={30} fill={'#333'}/>
+                            </div>
+                            
                             <div className = 'menuLabel'>
                                 { 'Logout' }
                             </div>

@@ -83,7 +83,7 @@ class Navbar extends Component<Props, *> {
  */
 function _mapStateToProps(state: Object) {
     return {
-        _isSettingsDrawerOpen: state.navbar.openDrawer === SettingsDrawer
+        _isSettingsDrawerOpen: false
     };
 }
 

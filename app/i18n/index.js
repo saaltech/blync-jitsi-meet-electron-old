@@ -38,7 +38,7 @@ moment.locale(detectedLocale);
  */
 export function translate(component) {
     // Use the default list of namespaces.
-    return withTranslation([ 'main', 'languages', 'countries' ])(component);
+    return withTranslation()(component);
 }
 
 export { i18n };

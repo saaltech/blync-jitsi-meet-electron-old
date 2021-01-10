@@ -18,6 +18,8 @@ import './features/base/jitsi-local-storage/setup';
 // Register middlewares and reducers.
 import './features/calendar-sync/middleware';
 import './features/app-auth/reducer';
+import './features/calendar-sync/reducer';
+import './features/google-api/reducer';
 
 import _createStore from './features/redux/store';
 

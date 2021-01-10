@@ -251,9 +251,9 @@ class SettingsDrawer extends Component<Props, *> {
  */
 function _mapStateToProps(state: Object) {
     return {
-        _email: state.settings.email,
-        _isOnboardingAdvancedSettings: !advenaceSettingsSteps.every(i => state.onboarding.onboardingShown.includes(i)),
-        _name: state.settings.name
+        _email: state.settings?.email,
+        _isOnboardingAdvancedSettings: !advenaceSettingsSteps.every(i => state.onboarding?.onboardingShown?.includes(i)),
+        _name: state.settings?.name
     };
 }
 

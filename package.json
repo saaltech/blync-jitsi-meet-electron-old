@@ -108,6 +108,7 @@
     "@atlaskit/toggle": "5.0.14",
     "@jitsi/js-utils": "1.0.3",
     "@microsoft/microsoft-graph-client": "1.1.0",
+    "antd": "4.10.0",
     "axios": "0.19.2",
     "electron-context-menu": "2.0.1",
     "electron-debug": "3.0.1",

@@ -32,7 +32,7 @@ export function isCalendarEnabled(stateful: Function | Object) {
         enableCalendarIntegration,
         googleApiApplicationClientID,
         microsoftApiApplicationClientID
-    } = toState(stateful)['features/base/config'] || {};
+    } = window.config || {};
 
     return Boolean(enableCalendarIntegration && (googleApiApplicationClientID || microsoftApiApplicationClientID));
 }

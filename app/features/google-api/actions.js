@@ -39,10 +39,10 @@ export function loadGoogleAPI() {
         googleApi.get()
         .then(() => {
             const {
-                liveStreamingEnabled,
+                liveStreamingEnabled = false,
                 enableCalendarIntegration,
                 googleApiApplicationClientID
-            } = getState()['features/base/config'];
+            } = window.config;
 
             if (getState()['features/google-api'].googleAPIState
                     === GOOGLE_API_STATES.NEEDS_LOADING) {

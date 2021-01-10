@@ -35,7 +35,7 @@ export function bootstrapCalendarIntegration(): Function {
 
         const {
             googleApiApplicationClientID
-        } = state['features/base/config'];
+        } = window.config;
         
         let {
             integrationReady,
