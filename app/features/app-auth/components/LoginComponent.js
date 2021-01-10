@@ -2,12 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 
-import config from '../../config';
+import configs from '../../config';
 import { connect } from 'react-redux';
 import {
     CALENDAR_TYPE,
     signIn
 } from '../../calendar-sync';
+import { InputField } from '../../base/premeeting';
 import { GoogleSignInButton, signOut } from '../../google-api';
 import { showEnableCookieTip } from '../../google-api/functions';
 import useRequest from '../../hooks/use-request';
@@ -23,6 +24,8 @@ function LoginComponent(props) {
     const { errorMsg, noSignInIcon = false, googleOfflineCode, reasonForLogin = '',
         closeAction, isOverlay = false, hideLogin = false, t, onSocialLoginFailed } = props;
 
+    const config = configs.config;
+    
     useEffect(() => {
         /**
          */
@@ -151,8 +154,8 @@ function LoginComponent(props) {
                         reasonForLogin && <div className='reasonForLogin'>{reasonForLogin}</div>
                     }
                     {
-                        window.config.googleApiApplicationClientID
-                        && window.config.enableCalendarIntegration
+                        window.config?.googleApiApplicationClientID
+                        && window.config?.enableCalendarIntegration
                         && <div style={{ display: 'flex', marginBottom: '10px', alignItems: 'center', justifyContent: 'center' }}>
                             <span style={{ marginRight: '10px' }}>Login with</span>
                             <GoogleSignInButton
@@ -168,7 +171,7 @@ function LoginComponent(props) {
                     <form onSubmit={onSubmit}>
                         <div className='form-field'>
                             <div className='form-label'>{'Username'}</div>
-                            <input
+                            <InputField
                                 focused={true}
                                 onChange={value => setEmail(value.trim())}
                                 placeHolder={'Enter your username'}
@@ -176,7 +179,7 @@ function LoginComponent(props) {
                         </div>
                         <div className='form-field'>
                             <div className='form-label'>{'Password'}</div>
-                            <input
+                            <InputField
                                 onChange={value => setPassword(value.trim())}
                                 placeHolder={'Enter your password'}
                                 type='password'

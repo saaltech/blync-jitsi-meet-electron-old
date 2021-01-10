@@ -1,1 +1,2 @@
-export { default as Welcome } from './Welcome';
+export { default as BlankPage } from './BlankPage';
+export { default as Welcome } from './WelcomePage';

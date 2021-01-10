@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { setToken, validateToken } from '../app-auth/functions';
 import { resolveAppLogout, resolveAppLogin, invalidateAndGoHome } from '../app-auth/actions';
-import config from '../config'
+import configs from '../config'
 
 export default ({ url, method, body, onSuccess }) => {
   const [errors, setErrors] = useState(null);
@@ -11,7 +11,7 @@ export default ({ url, method, body, onSuccess }) => {
     try {
       setErrors(null);
       let validToken = !tokenRequired || validateToken();
-
+      const config = configs;
       //TODO check for !validToken once testing is done
       if(!validToken) {
         // Try refreshToken call
@@ -45,7 +45,7 @@ export default ({ url, method, body, onSuccess }) => {
 
       const isGetMethod = method.toLowerCase() === 'post' || method.toLowerCase() === 'put'
 
-      const response = await axios[method](url, 
+      const response = await axios[method](`${configs.defaultServerURL}/${url}`, 
         isGetMethod ? 
         (typeof body === "function" ? body() : body) :
         setToken(tokenRequired)

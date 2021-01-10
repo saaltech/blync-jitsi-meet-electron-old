@@ -28,6 +28,8 @@ import { /*persistor,*/ store } from './features/redux';
 
 import './i18n';
 
+import configs from './features/config';
+
 /**
  * Component encapsulating App component with redux store using provider.
  */
@@ -57,6 +59,10 @@ class Root extends Component<*> {
 
     componentDidMount() {
         window.APP = {};
+        window.config = {
+            googleApiApplicationClientID: configs.googleApiApplicationClientID,
+            enableCalendarIntegration: configs.enableCalendarIntegration
+        }
 
          /**
          * Make the mobile {@code BaseApp} wait until the {@code AsyncStorage}

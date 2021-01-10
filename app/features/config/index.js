@@ -13,7 +13,7 @@ export default {
     /**
      * Application name.
      */
-    appName: 'Jitsi Meet',
+    appName: 'JifMeet',
 
     /**
     * The prefix for application protocol.
@@ -45,6 +45,10 @@ export default {
      * The URL of Terms and Conditions Page.
      */
     termsAndConditionsURL: 'https://jitsi.org/meet/terms',
+
+    enableCalendarIntegration: true,
+    googleApiApplicationClientID: '143401360954-91aq4dbaj70tj4q6demjgsj5odk1bppt.apps.googleusercontent.com',
+
 
     config: {
         unauthenticatedIRP: "/irp",
