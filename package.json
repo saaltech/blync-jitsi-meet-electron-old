@@ -133,6 +133,7 @@
     "react-i18next": "11.5.1",
     "react-redux": "5.1.1",
     "react-router-redux": "5.0.0-alpha.9",
+    "react-share": "4.2.0",
     "redux": "4.0.1",
     "redux-thunk": "2.2.0",
     "redux-logger": "3.0.6",

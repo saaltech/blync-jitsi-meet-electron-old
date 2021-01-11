@@ -11,7 +11,7 @@ import useRequest from '../../../hooks/use-request';
 
 import { IoIosCloseCircle } from 'react-icons/io';
 import { HiCheckCircle } from 'react-icons/hi';
-// import ShareMeeting from '../../../prejoin/components/ShareMeeting';
+import ShareMeeting from './ShareMeeting';
 
 import { translate } from '../../../../i18n';
 
@@ -113,15 +113,14 @@ function ManageMeetings(props: Props) {
                                                             </div>
                                                         <div>
                                                             {
-                                                                /*
                                                                 <ShareMeeting isShowLabel={false}
-                                                                meetingId={event.conferenceId}
-                                                                meetingUrl={`${window.location.origin}/${event.conferenceId}`}
-                                                                meetingName={event.conferenceName}
-                                                                meetingFrom={event.scheduledFrom}
-                                                                meetingTo={event.scheduledTo}
-                                                                meetingPassword={event.isSecretEnabled ? event.conferenceSecret : ''} />
-                                                                */
+                                                                    meetingId={event.conferenceId}
+                                                                    meetingUrl={`${window.location.origin}/${event.conferenceId}`}
+                                                                    meetingName={event.conferenceName}
+                                                                    meetingFrom={event.scheduledFrom}
+                                                                    meetingTo={event.scheduledTo}
+                                                                    meetingPassword={event.isSecretEnabled ? event.conferenceSecret : ''} />
+                                                                
                                                             }
                                                             
                                                         </div>

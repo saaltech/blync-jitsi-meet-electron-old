@@ -2,7 +2,7 @@
 
 import type { Dispatch } from 'redux';
 import axios from 'axios';
-import config from '../config'
+import configs from '../config'
 
 import {
     SET_USER_SIGNED_OUT,
@@ -100,6 +100,7 @@ export function setPostWelcomePageScreen(room: string, meetingObj, isCode = fals
 export async function validationFromNonComponents(tokenRequired, isHomePage = false) {
     let validToken = !tokenRequired || validateToken();
 
+    const config = configs.config
       //TODO check for !validToken once testing is done
       if(!validToken) {
         // Try refreshToken call
@@ -109,7 +110,7 @@ export async function validationFromNonComponents(tokenRequired, isHomePage = fa
         if(refreshToken) {
           try {
             const res = await axios.post(
-              config.unauthenticatedIRP + config.refreshToken, 
+              configs.defaultServerURL + '/' +config.unauthenticatedIRP + config.refreshToken, 
               {
                 refresh_token: refreshToken
               })
