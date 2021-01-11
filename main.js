@@ -193,6 +193,7 @@ function createJitsiMeetWindow() {
             experimentalFeatures: true, // Insertable streams, for E2EE.
             nativeWindowOpen: true,
             nodeIntegration: false,
+            enableRemoteModule: true,
             preload: path.resolve(basePath, './build/preload.js')
         }
     };

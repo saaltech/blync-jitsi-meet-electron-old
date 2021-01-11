@@ -213,8 +213,8 @@ class Conference extends Component<Props, State> {
         };
 
         const configOverwrite = {
-            startWithAudioMuted: this.props._startWithAudioMuted,
-            startWithVideoMuted: this.props._startWithVideoMuted
+            startWithAudioMuted: this.props._startWithAudioMuted || false,
+            startWithVideoMuted: this.props._startWithVideoMuted || false
         };
 
         const options = {
