@@ -74,7 +74,9 @@ function ManageMeetings(props: Props) {
 
     useEffect(() => {
         getConferencesAsync();
+    }, [])
 
+    useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
     });
 

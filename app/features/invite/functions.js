@@ -1,10 +1,11 @@
 // @flow
 
-import { i18next } from '../../i18n';
+import { i18n } from '../../i18n';
 import { toState } from '../redux';
 import { doGetJSON, parseURIString } from '../base/util';
 
 import logger from './logger';
+import config from '../config'
 
 declare var $: Function;
 declare var interfaceConfig: Object;
@@ -255,7 +256,7 @@ export function getInviteText({
 
     let invite = _localParticipantName
         ? t('info.inviteURLFirstPartPersonal', { name: _localParticipantName,
-            app: interfaceConfig.APP_NAME })
+            app: config.appName })
         : t('info.inviteURLFirstPartGeneral');
 
     invite += `\nTopic: ${_meetingName}\n`;
@@ -480,7 +481,7 @@ export function getShareInfoText(
         roomUrl = `<a href="${roomUrl}">${roomUrl}</a>`;
     }
 
-    let infoText = i18next.t('share.mainText', { roomUrl });
+    let infoText = i18n.t('share.mainText', { roomUrl });
 
     if (includeDialInfo) {
         const { room } = parseURIString(inviteUrl);
@@ -525,9 +526,9 @@ export function getShareInfoText(
                 const phoneNumber = _getDefaultPhoneNumber(numbers) || '';
 
                 return `${
-                    i18next.t('info.dialInNumber')} ${
+                    i18n.t('info.dialInNumber')} ${
                     phoneNumber} ${
-                    i18next.t('info.dialInConferenceID')} ${
+                    i18n.t('info.dialInConferenceID')} ${
                     conferenceID}#\n\n`;
             })
             .catch(error =>
@@ -542,7 +543,7 @@ export function getShareInfoText(
                         = `<a href="${dialInfoPageUrl}">${dialInfoPageUrl}</a>`;
                 }
 
-                infoText += i18next.t('share.dialInfoText', {
+                infoText += i18n.t('share.dialInfoText', {
                     defaultDialInNumber,
                     dialInfoPageUrl });
 

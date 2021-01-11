@@ -28,7 +28,7 @@ function ShareMeeting(props) {
     const invite = getInviteText({
         _conferenceName,
         _localParticipantName,
-        _inviteUrl: config.defaultServerURL + '/' + meetingId + '?join=true',
+        _inviteUrl: config.defaultServerURL + '/' + _meetingId + '?join=true',
         _locationUrl,
         _dialIn: {},
         _liveStreamViewURL: null,
