@@ -305,22 +305,25 @@ class WelcomePage extends AbstractWelcomePage {
         const intervalId = setInterval(async () => {
             // Done to fix the Redux persist store rehydration issue seen on Safari v13.x
             // rehydration doesnt complete before we navigate to the prejoin page in _onJoin method below.
-            const roomId = this.state.room;
-            if (roomId) {
+            const appAuth = JSON.parse(window.localStorage.getItem('features/app-auth'));
+
+            if ((appAuth.meetingDetails || {}).meetingId) {
                 clearInterval(intervalId);
 
                 // Check if the meeting exists
-                const meetingExists = await getMeetingById(roomId);
-                if (!meetingExists) {
-                    super._onRoomChange('');
-                    this.setInvalidMeetingId(`${roomId}`);
+                if(appAuth.meetingDetails.isMeetingCode) {
+                    const meetingExists = await getMeetingById(appAuth.meetingDetails.meetingId);
+                    if (!meetingExists) {
+                        super._onRoomChange('');
+                        this.setInvalidMeetingId(`${appAuth.meetingDetails.meetingId}`);
 
-                    this.setState({
-                        showGoLoader: false,
-                        formDisabled: false
-                    });
+                        this.setState({
+                            showGoLoader: false,
+                            formDisabled: false
+                        });
 
-                    return;
+                        return;
+                    }
                 }
 
                 this._onJoin(action);
