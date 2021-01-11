@@ -1,7 +1,7 @@
 {
-  "name": "jitsi-meet-electron",
+  "name": "jifmeet-electron",
   "version": "2.3.1",
-  "description": "Electron application for Jitsi Meet",
+  "description": "Electron application for JifMeet",
   "main": "./build/main.js",
   "productName": "Jitsi Meet",
   "scripts": {
@@ -19,7 +19,7 @@
   },
   "build": {
     "appId": "org.jitsi.jitsi-meet",
-    "productName": "Jitsi Meet",
+    "productName": "JifMeet",
     "generateUpdatesFilesForAllChannels": true,
     "files": [
       "**/*",

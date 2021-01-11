@@ -32,7 +32,7 @@ function ManageMeetings(props: Props) {
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [calendarEvents, setCalendarEvents] = useState([]);
 
-    const { t } = props;
+    const { t, onJoin } = props;
 
     const config = configs.config;
 
@@ -62,7 +62,7 @@ function ManageMeetings(props: Props) {
     };
 
     const handleClickStart = meetingId => {
-        window.location.href = `${window.location.origin}/${meetingId}`;
+        onJoin(null, meetingId);
     }
 
     const getConferencesAsync = async () => {

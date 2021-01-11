@@ -225,7 +225,7 @@ export class AbstractWelcomePage extends Component<Props, *> {
      * @protected
      * @returns {void}
      */
-    _onJoin(action = '') {
+    _onJoin(action = '', meetingId = null) {
         const room = this.state.room || this.state.generatedRoomname;
 
         // if (room) {
@@ -244,7 +244,7 @@ export class AbstractWelcomePage extends Component<Props, *> {
             
             
             const conference = createConferenceObjectFromURL(
-                configs.defaultServerURL + '/' + meetingDetails.meetingId + (meetingDetails.isMeetingCode ? `?actions=${action}` : `?home=true&actions=${action}`));
+                configs.defaultServerURL + '/' + (meetingId ? meetingId : (meetingDetails.meetingId + (meetingDetails.isMeetingCode ? `?actions=${action}` : `?home=true&actions=${action}`))));
 
             if (!conference) {
                 return;
