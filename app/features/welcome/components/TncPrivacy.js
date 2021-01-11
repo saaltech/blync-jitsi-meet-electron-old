@@ -42,13 +42,13 @@ function TncPrivacy() {
                 <li>
                     <a
                         className='menuLabel'
-                        href='/privacy-policy'
+                        href='https://meet.jifmeet.com/privacy-policy'
                         target='_blank'>Privacy Policy</a>
                 </li>
                 <li>
                     <a
                         className='menuLabel'
-                        href='/TnC'
+                        href='https://meet.jifmeet.com/TnC'
                         target='_blank'>Terms and Conditions</a>
                 </li>
             </ul>

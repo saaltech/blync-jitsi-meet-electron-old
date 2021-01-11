@@ -40,7 +40,7 @@ function ManageMeetings(props: Props) {
 
     const setData = data => {
         if (data && data.length) {
-            setCalendarEvents(data.slice(data.length - 50, data.length));
+            setCalendarEvents(data.slice(data.length - 50, data.length).reverse());
         } else {
             setCalendarEvents([]);
         }

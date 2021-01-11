@@ -77,11 +77,13 @@ class WelcomePage extends AbstractWelcomePage {
         this._onFormSubmit = this._onFormSubmit.bind(this);
         this.handleClickMeetNow = this.handleClickMeetNow.bind(this);
         this._onRoomChange = this._onRoomChange.bind(this);
+        this._redirectOnButtonChange = this._redirectOnButtonChange.bind(this);
         this._onRoomNameChanged = this._onRoomNameChanged.bind(this);
         this._setRoomInputRef = this._setRoomInputRef.bind(this);
         this._closeLogin = this._closeLogin.bind(this);
         this._onSocialLoginFailed = this._onSocialLoginFailed.bind(this);
         this._cleanupTooltip = this._cleanupTooltip.bind(this);
+        this.handleRouteChange = this.handleRouteChange.bind(this);
     }
 
     /**
@@ -110,7 +112,11 @@ class WelcomePage extends AbstractWelcomePage {
 
         this.props.dispatch(setPostWelcomePageScreen(null, {}));
         const invalidMeetingId = getQueryVariable('invalidMeetingId');
-        const activeButtonAction = getQueryVariable('actions');
+        // const activeButtonAction = getQueryVariable('actions');
+
+        const { actions }  = this.props.location.state || {};
+
+        const activeButtonAction = actions;
 
         if (invalidMeetingId) {
             this.setInvalidMeetingId(invalidMeetingId);
@@ -121,13 +127,7 @@ class WelcomePage extends AbstractWelcomePage {
             });
         }
 
-        if (activeButtonAction) {
-            this.setState({ activeButton: activeButtonAction, showNoCreateMeetingPrivilegeTip: !this._canCreateMeetings() });
-            this.setSwitchActiveIndex(activeButtonAction === 'create' ? 0 : 1);
-        } else {
-            this.setSwitchActiveIndex(1);
-            this.setState({ activeButton: 'join', showNoCreateMeetingPrivilegeTip: !this._canCreateMeetings() });
-        }
+        this.setPageToShow(activeButtonAction);
         this.props.dispatch(decideAppLogin());
 
 
@@ -137,6 +137,24 @@ class WelcomePage extends AbstractWelcomePage {
             this._updateRoomname();
         }
 
+    }
+
+    componentDidUpdate(prevProps) {
+        const prevActions = prevProps.location?.state?.actions;
+        const currentActions = this.props.location?.state?.actions;
+        if(currentActions && prevActions !== currentActions) {
+            this.setPageToShow(currentActions);
+        }
+    }
+
+    setPageToShow(activeButtonAction) {
+        if (activeButtonAction) {
+            this.setState({ activeButton: activeButtonAction, showNoCreateMeetingPrivilegeTip: !this._canCreateMeetings() });
+            this.setSwitchActiveIndex(activeButtonAction === 'create' ? 0 : 1);
+        } else {
+            this.setSwitchActiveIndex(1);
+            this.setState({ activeButton: 'join', showNoCreateMeetingPrivilegeTip: !this._canCreateMeetings() });
+        }
     }
 
     /**
@@ -420,7 +438,7 @@ class WelcomePage extends AbstractWelcomePage {
     }
 
     handleRouteChange(value) {
-        redirectOnButtonChange(value);
+        this._redirectOnButtonChange(value);
     }
 
     /**
@@ -638,6 +656,10 @@ class WelcomePage extends AbstractWelcomePage {
      */
     _onRoomChange(event) {
         super._onRoomChange(event.target.value);
+    }
+
+    _redirectOnButtonChange(value) {
+        super._redirectOnButtonChange(value);
     }
 
     /**

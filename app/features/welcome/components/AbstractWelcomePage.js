@@ -105,6 +105,7 @@ export class AbstractWelcomePage extends Component<Props, *> {
             = this._animateRoomnameChanging.bind(this);
         this._onJoin = this._onJoin.bind(this);
         this._onRoomChange = this._onRoomChange.bind(this);
+        this._redirectOnButtonChange = this._redirectOnButtonChange.bind(this);
         this._renderInsecureRoomNameWarning = this._renderInsecureRoomNameWarning.bind(this);
         this._updateRoomname = this._updateRoomname.bind(this);
     }
@@ -251,6 +252,12 @@ export class AbstractWelcomePage extends Component<Props, *> {
 
             console.log("this.props.dispatch: ", this.props.dispatch);
             this.props.dispatch(push('/conference', conference));
+    }
+
+    _redirectOnButtonChange: (string) => void;
+
+    _redirectOnButtonChange(buttonType: string) {
+        this.props.dispatch(push('/', { actions: buttonType }));
     }
 
     _onRoomChange: (string) => void;
