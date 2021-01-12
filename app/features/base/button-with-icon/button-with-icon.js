@@ -7,7 +7,7 @@ export default function ButtonWithIcon(props) {
     return (
         <div onClick={onButtonClick} className={`buttonWithIconComponent ${className}`}>
             <span className="button-with-icon__icon">
-                <img className="image-wrapper" src={`../app/images/${source}`} alt={source}/>
+                <img className="image-wrapper" src={`../resources/images/${source}`} alt={source}/>
                 {/* <IconContext.Provider value={{
                     style: {
                         color: IconComponent.color,

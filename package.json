@@ -1,9 +1,9 @@
 {
   "name": "jifmeet-electron",
   "version": "2.3.1",
-  "description": "Electron application for JifMeet",
+  "description": "Electron application for Jifmeet",
   "main": "./build/main.js",
-  "productName": "Jitsi Meet",
+  "productName": "Jifmeet",
   "scripts": {
     "start": "webpack --config ./webpack.main.js --mode development && concurrently \"npm:watch\" \"electron ./build/main.js\"",
     "clean": "rm -rf node_modules build dist",
@@ -18,8 +18,8 @@
     "node": ">=12.0.0"
   },
   "build": {
-    "appId": "org.jitsi.jitsi-meet",
-    "productName": "JifMeet",
+    "appId": "com.jifmeet.meet",
+    "productName": "Jifmeet",
     "generateUpdatesFilesForAllChannels": true,
     "files": [
       "**/*",
@@ -28,22 +28,22 @@
       "!main.js"
     ],
     "mac": {
-      "artifactName": "jitsi-meet.${ext}",
+      "artifactName": "jifmeet.${ext}",
       "category": "public.app-category.video",
       "darkModeSupport": true,
       "hardenedRuntime": true,
       "entitlements": "entitlements.mac.plist",
       "entitlementsInherit": "entitlements.mac.plist",
       "extendInfo": {
-        "NSCameraUsageDescription": "Jitsi Meet requires access to your camera in order to make video-calls.",
-        "NSMicrophoneUsageDescription": "Jitsi Meet requires access to your microphone in order to make calls (audio/video)."
+        "NSCameraUsageDescription": "Jifmeet requires access to your camera in order to make video-calls.",
+        "NSMicrophoneUsageDescription": "Jifmeet requires access to your microphone in order to make calls (audio/video)."
       }
     },
     "linux": {
-      "artifactName": "jitsi-meet-${arch}.${ext}",
+      "artifactName": "jifmeet-${arch}.${ext}",
       "category": "VideoConference;AudioVideo;Audio;Video;Network",
-      "description": "Jitsi Meet Desktop App",
-      "executableName": "jitsi-meet",
+      "description": "Jifmeet Desktop App",
+      "executableName": "jifmeet",
       "target": [
         {
           "arch": "x64",
@@ -52,7 +52,7 @@
       ]
     },
     "win": {
-      "artifactName": "jitsi-meet.${ext}",
+      "artifactName": "jifmeet.${ext}",
       "target": [
         {
           "arch": [
@@ -68,10 +68,10 @@
     },
     "protocols": [
       {
-        "name": "jitsi-protocol",
+        "name": "jifmeet-protocol",
         "role": "Viewer",
         "schemes": [
-          "jitsi-meet"
+          "jifeet"
         ]
       }
     ]
@@ -79,18 +79,14 @@
   "pre-commit": [
     "lint"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/jitsi/jitsi-meet-electron"
-  },
   "keywords": [
     "jingle",
     "webrtc",
     "xmpp",
     "electron",
-    "jitsi-meet"
+    "jifeet"
   ],
-  "author": "Jitsi Team <support@jitsi.org>",
+  "author": "Jifmeet Team <saal@saal.ai>",
   "readmeFilename": "README.md",
   "license": "Apache-2.0",
   "dependencies": {
@@ -129,19 +125,20 @@
     "mousetrap": "1.6.2",
     "react": "16.8.0",
     "react-dom": "16.8.0",
-    "react-icons": "3.11.0",
     "react-i18next": "11.5.1",
+    "react-icons": "3.11.0",
     "react-redux": "5.1.1",
     "react-router-redux": "5.0.0-alpha.9",
     "react-share": "4.2.0",
     "redux": "4.0.1",
-    "redux-thunk": "2.2.0",
     "redux-logger": "3.0.6",
     "redux-persist": "5.10.0",
     "redux-persist-electron-storage": "2.0.0",
+    "redux-thunk": "2.2.0",
     "sanitize-html": "2.1.0",
     "source-map-support": "0.5.16",
     "styled-components": "3.4.0",
+    "url-loader": "^4.1.1",
     "windows-iana": "3.1.0",
     "zxcvbn": "4.4.2"
   },

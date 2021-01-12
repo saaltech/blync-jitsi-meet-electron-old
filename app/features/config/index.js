@@ -13,7 +13,7 @@ export default {
     /**
      * Application name.
      */
-    appName: 'JifMeet',
+    appName: 'Jifmeet',
 
     /**
     * The prefix for application protocol.

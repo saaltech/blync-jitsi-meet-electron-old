@@ -315,7 +315,7 @@ class Conference extends Component<Props, State> {
     _onResolveAppLogin: (*) => void;
 
     /**
-     * Dispatches resolveAppLogin to log the user in as the user log into the JifMeet app.
+     * Dispatches resolveAppLogin to log the user in as the user log into the Jifmeet app.
      *
      * @param {Object} data - Event by which the function is called.
      * @returns {void}

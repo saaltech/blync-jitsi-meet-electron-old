@@ -19,7 +19,7 @@ function LeftPanel(props) {
             position: 'fixed',
             top: '10px',
             left: '0px',
-            backgroundImage: `url(${interfaceConfig?.LOGO_WITH_BOTTOM_LABEL_URL || '../app/images/logo_bottom_label.png'})`
+            backgroundImage: `url(${interfaceConfig?.LOGO_WITH_BOTTOM_LABEL_URL || '../resources/images/logo_bottom_label.png'})`
         };
 
         reactElement = (<div
