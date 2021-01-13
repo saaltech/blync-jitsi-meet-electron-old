@@ -192,7 +192,7 @@ function createJitsiMeetWindow() {
         webPreferences: {
             experimentalFeatures: true, // Insertable streams, for E2EE.
             nativeWindowOpen: true,
-            nodeIntegration: false,
+            nodeIntegration: true,
             enableRemoteModule: true,
             preload: path.resolve(basePath, './build/preload.js')
         }
@@ -339,6 +339,7 @@ if (isDev && process.platform === 'win32') {
  * it will trigger this event below
  */
 app.on('open-url', (event, data) => {
+    console.log('response from front-end', data);
     event.preventDefault();
     handleProtocolCall(data);
 });

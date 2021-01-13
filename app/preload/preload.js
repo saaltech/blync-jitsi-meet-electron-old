@@ -8,6 +8,7 @@ const { openExternalLink } = require('../features/utils/openExternalLink');
 const whitelistedIpcChannels = [ 'protocol-data-msg', 'renderer-ready' ];
 
 window.jitsiNodeAPI = {
+    remote,
     createElectronStorage,
     osUserInfo: os.userInfo,
     openExternalLink,

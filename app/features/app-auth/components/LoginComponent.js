@@ -14,9 +14,43 @@ import { showEnableCookieTip } from '../../google-api/functions';
 import useRequest from '../../hooks/use-request';
 import { resolveAppLogin } from '../actions';
 
+// import OAuth2Provider from 'electron-oauth-helper/dist/oauth2';
+
+/*const browserWindowParams = {
+    'use-content-size': true,
+    center: true,
+    show: false,
+    resizable: false,
+    'always-on-top': true,
+    'standard-window': true,
+    'auto-hide-menu-bar': true,
+    'node-integration': false
+};
+
+const googleOauth = electronGoogleOauth(browserWindowParams);*/
+
+
+
 /**
  */
 function LoginComponent(props) {
+    /*const CLIENTID='143401360954-91aq4dbaj70tj4q6demjgsj5odk1bppt.apps.googleusercontent.com';
+const CLIENTSECRET='47oKX0RCR4Xuq8Za9vjA91tW';
+
+console.log("window: ", window);
+
+const oauthConfig = { 
+    access_token_url: "https://dev-jifmeet.saal.ai",
+    client_id: CLIENTID,
+  //client_secret: CLIENTSECRET,
+  redirect_uri: "https://dev-jifmeet.saal.ai",
+  authorize_url: "https://accounts.google.com/o/oauth2/v2/auth",
+  response_type: "code",
+  scope: "https://www.googleapis.com/auth/userinfo.profile",
+}
+//console.log(OAuth2Provider)
+const provider = new OAuth2Provider(oauthConfig);*/
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isSocialLogin, setIsSocialLogin] = useState(false);
@@ -106,7 +140,7 @@ function LoginComponent(props) {
      * @private
      * @returns {void}
      */
-    const _onClickGoogle = () => {
+    const _onClickGoogle = async () => {
         // Clear any existing errors shown
         if (isOverlay && window.showEnableCookieTip) {
             showEnableCookieTip(true);
@@ -117,13 +151,35 @@ function LoginComponent(props) {
         isOverlay && closeAction();
         setIsSocialLogin(true);
 
-        const isElectron = navigator.userAgent.includes('Electron');
+
+        const { shell } = window.jitsiNodeAPI.remote
+
+        shell.openExternal("https://localhost:8080/googleAuth")
+
+        /*const BrowserWindow = window.jitsiNodeAPI.remote.BrowserWindow;
+        const authWindow = new BrowserWindow({
+            width: 600,
+            height: 800,
+            webPreferences: {
+              nodeIntegration: false, // We recommend disabling nodeIntegration for security.
+              contextIsolation: true // We recommend enabling contextIsolation for security.
+              // see https://github.com/electron/electron/blob/master/docs/tutorial/security.md
+            },
+          })
+
+        provider.perform(authWindow)
+        .then(resp => {
+            console.log("then Block",resp)
+        })
+        .catch(error => console.error("Catch Block",error))*/
+
+        /*const isElectron = navigator.userAgent.includes('Electron');
         if(isElectron) {
             // Send the 'googleLogin' request to the parent containing window (like electron app),
             window.parent.postMessage({'googleLogin': true}, '*');
         } else {
             APP.store.dispatch(signIn(CALENDAR_TYPE.GOOGLE));
-        }
+        }*/
         
     };
 

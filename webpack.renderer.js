@@ -89,7 +89,9 @@ module.exports = {
         ]
     },
     externals: [ {
-        'jitsi-meet-electron-utils': 'require(\'jitsi-meet-electron-utils\')'
+        'jitsi-meet-electron-utils': 'require(\'jitsi-meet-electron-utils\')',
+        'fs': 'require(\'fs\')',
+        'net': 'require(\'net\')'
     } ],
     resolve: {
         modules: [

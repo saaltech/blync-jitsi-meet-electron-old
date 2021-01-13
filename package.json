@@ -71,7 +71,7 @@
         "name": "jifmeet-protocol",
         "role": "Viewer",
         "schemes": [
-          "jifeet"
+          "jifmeet"
         ]
       }
     ]
@@ -105,11 +105,12 @@
     "@jitsi/js-utils": "1.0.3",
     "@microsoft/microsoft-graph-client": "1.1.0",
     "antd": "4.10.0",
-    "axios": "0.19.2",
+    "axios": "0.21.1",
     "electron-context-menu": "2.0.1",
     "electron-debug": "3.0.1",
     "electron-is-dev": "1.2.0",
     "electron-log": "4.1.1",
+    "electron-oauth-helper": "^5.1.1",
     "electron-reload": "1.5.0",
     "electron-store": "5.1.1",
     "electron-updater": "4.2.5",

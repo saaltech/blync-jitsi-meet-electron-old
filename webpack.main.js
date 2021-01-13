@@ -14,7 +14,9 @@ module.exports = {
     externals: [ {
         'jitsi-meet-electron-utils': 'require(\'jitsi-meet-electron-utils\')',
         'electron-debug': 'require(\'electron-debug\')',
-        'electron-reload': 'require(\'electron-reload\')'
+        'electron-reload': 'require(\'electron-reload\')',
+        'fs': 'require(\'fs\')',
+        'net': 'require(\'net\')'
     } ],
     resolve: {
         modules: [
