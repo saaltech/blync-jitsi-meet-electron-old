@@ -1,3 +1,5 @@
+# This repo has been archived
+
 # Jitsi Meet Electron
 
 Desktop application for [Jitsi Meet] built with [Electron].
