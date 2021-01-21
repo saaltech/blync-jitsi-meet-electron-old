@@ -29,9 +29,8 @@ const showDevTools = Boolean(process.env.SHOW_DEV_TOOLS) || (process.argv.indexO
 // We need this because of https://github.com/electron/electron/issues/18214
 app.commandLine.appendSwitch('disable-site-isolation-trials');
 
-// https://bugs.chromium.org/p/chromium/issues/detail?id=1086373
-app.commandLine.appendSwitch('disable-webrtc-hw-encoding');
-app.commandLine.appendSwitch('disable-webrtc-hw-decoding');
+// We need to disable hardware acceleration because its causes the screenshare to flicker.
+app.commandLine.appendSwitch('disable-gpu');
 
 // Needed until robot.js is fixed: https://github.com/octalmage/robotjs/issues/580
 app.allowRendererProcessReuse = false;
@@ -176,6 +175,7 @@ function createJitsiMeetWindow() {
         protocol: 'file:',
         slashes: true
     });
+    // const indexURL = 'https://localhost:8080/'
 
     // Options used when creating the main Jitsi Meet window.
     // Use a preload script in order to provide node specific functionality
@@ -186,7 +186,7 @@ function createJitsiMeetWindow() {
         y: windowState.y,
         width: windowState.width,
         height: windowState.height,
-        icon: path.resolve(basePath, './resources/icons/icon_512x512.png'),
+        icon: path.resolve(basePath, './resources/icon.png'),
         minWidth: 800,
         minHeight: 600,
         show: false,

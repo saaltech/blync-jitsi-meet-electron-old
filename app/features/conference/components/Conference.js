@@ -14,6 +14,7 @@ import { getSetting, setEmail, setName } from '../../settings';
 import { conferenceEnded, conferenceJoined } from '../actions';
 import JitsiMeetExternalAPI from '../external_api';
 import { LoadingIndicator, Wrapper } from '../styled';
+import Loading from '../../always-on-top/Loading';
 
 const ENABLE_REMOTE_CONTROL = false;
 
@@ -156,14 +157,14 @@ class Conference extends Component<Props, State> {
      * @returns {void}
      */
     componentDidUpdate(prevProps) {
-        const { props } = this;
+        // const { props } = this;
 
-        if (props._email !== prevProps._email) {
-            this._setEmail(props._email);
-        }
-        if (props._name !== prevProps._name) {
-            this._setName(props._name);
-        }
+        // if (props._email !== prevProps._email) {
+        //     this._setEmail(props._email);
+        // }
+        // if (props._name !== prevProps._name) {
+        //     this._setName(props._name);
+        // }
     }
 
     /**
@@ -232,8 +233,8 @@ class Conference extends Component<Props, State> {
         this._api.on('readyToClose', this._onVideoConferenceEnded);
         this._api.on('videoConferenceJoined',
             (conferenceInfo: Object) => {
-                this.props.dispatch(conferenceJoined(this._conference));
-                this._onVideoConferenceJoined(conferenceInfo);
+                // this.props.dispatch(conferenceJoined(this._conference));
+                // this._onVideoConferenceJoined(conferenceInfo);
             }
         );
 
@@ -273,7 +274,7 @@ class Conference extends Component<Props, State> {
         if (this.state.isLoading) {
             return (
                 <LoadingIndicator>
-                    <Spinner size = 'large' />
+                    <Loading />
                 </LoadingIndicator>
             );
         }

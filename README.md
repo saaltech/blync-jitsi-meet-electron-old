@@ -54,6 +54,25 @@ If you want to hack on this project, here is how you do it.
 
 Install Node.js 12 first (or if you use [nvm](https://github.com/nvm-sh/nvm), switch to Node.js 12 by running `nvm use`).
 
+<details><summary>Extra dependencies for Windows</summary>
+
+```bash
+npm install --global --production windows-build-tools
+npm config set msvs_version 2017
+```
+</details>
+
+<details><summary>Extra dependencies for GNU/Linux</summary>
+
+X11, PNG and zlib development packages are necessary. On Debian-like systems then can be installed as follows:
+
+```bash
+sudo apt install libx11-dev zlib1g-dev libpng-dev libxtst-dev
+```
+</details>
+
+Install all required packages:
+
 ```bash
 npm install
 ```
@@ -125,7 +144,7 @@ Builtin auto-updates are not yet handled in macOS due to unsigned build.
 
 ### GNU/Linux
 
-There is a known issue which prevents the app from starting on some Linux distributions: #231
+There is a known issue which prevents the app from starting on some Linux distributions: [#231](https://github.com/jitsi/jitsi-meet-electron/issues/231)
 
 If after downloading it, you can't execute the file directly, try running `chmod u+x ./jitsi-meet-x86_64.AppImage`
 

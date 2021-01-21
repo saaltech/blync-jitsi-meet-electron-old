@@ -1,15 +1,14 @@
 {
-  "name": "jitsi-meet-electron",
-  "version": "2.4.1",
-  "description": "Electron application for Jitsi Meet",
+  "name": "jifmeet-electron",
+  "version": "1.0.0",
+  "description": "Electron application for Jifmeet",
   "main": "./build/main.js",
-  "productName": "Jitsi Meet",
+  "productName": "Jifmeet",
   "scripts": {
     "start": "webpack --config ./webpack.main.js --mode development && concurrently \"npm:watch\" \"electron ./build/main.js\"",
     "clean": "rm -rf node_modules build dist",
     "lint": "eslint . && flow",
     "build": "webpack --config ./webpack.main.js --mode production && webpack --config ./webpack.renderer.js --mode production",
-    "pack": "npm run build && electron-builder --dir",
     "dist": "npm run build && electron-builder",
     "postinstall": "patch-package && electron-builder install-app-deps",
     "watch": "webpack --config ./webpack.renderer.js --mode development --watch --watch-poll"
@@ -18,8 +17,8 @@
     "node": ">=12.0.0"
   },
   "build": {
-    "appId": "org.jitsi.jitsi-meet",
-    "productName": "Jitsi Meet",
+    "appId": "com.jifmeet.meet",
+    "productName": "Jifmeet",
     "generateUpdatesFilesForAllChannels": true,
     "files": [
       "**/*",
@@ -28,22 +27,22 @@
       "!main.js"
     ],
     "mac": {
-      "artifactName": "jitsi-meet.${ext}",
+      "artifactName": "jifmeet.${ext}",
       "category": "public.app-category.video",
       "darkModeSupport": true,
       "hardenedRuntime": true,
       "entitlements": "entitlements.mac.plist",
       "entitlementsInherit": "entitlements.mac.plist",
       "extendInfo": {
-        "NSCameraUsageDescription": "Jitsi Meet requires access to your camera in order to make video-calls.",
-        "NSMicrophoneUsageDescription": "Jitsi Meet requires access to your microphone in order to make calls (audio/video)."
+        "NSCameraUsageDescription": "Jifmeet requires access to your camera in order to make video-calls.",
+        "NSMicrophoneUsageDescription": "Jifmeet requires access to your microphone in order to make calls (audio/video)."
       }
     },
     "linux": {
-      "artifactName": "jitsi-meet-${arch}.${ext}",
+      "artifactName": "jifmeet-${arch}.${ext}",
       "category": "VideoConference;AudioVideo;Audio;Video;Network",
-      "description": "Jitsi Meet Desktop App",
-      "executableName": "jitsi-meet",
+      "description": "Jifmeet Desktop App",
+      "executableName": "jifmeet",
       "target": [
         {
           "arch": "x64",
@@ -52,7 +51,7 @@
       ]
     },
     "win": {
-      "artifactName": "jitsi-meet.${ext}",
+      "artifactName": "jifmeet.${ext}",
       "target": [
         {
           "arch": [
@@ -68,10 +67,10 @@
     },
     "protocols": [
       {
-        "name": "jitsi-protocol",
+        "name": "jifmeet-protocol",
         "role": "Viewer",
         "schemes": [
-          "jitsi-meet"
+          "jifmeet"
         ]
       }
     ]
@@ -79,18 +78,14 @@
   "pre-commit": [
     "lint"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/jitsi/jitsi-meet-electron"
-  },
   "keywords": [
     "jingle",
     "webrtc",
     "xmpp",
     "electron",
-    "jitsi-meet"
+    "jifmeet"
   ],
-  "author": "Jitsi Team <support@jitsi.org>",
+  "author": "Jifmeet Team <saal@saal.ai>",
   "readmeFilename": "README.md",
   "license": "Apache-2.0",
   "dependencies": {
@@ -116,7 +111,7 @@
     "electron-window-state": "5.0.3",
     "history": "4.10.1",
     "i18next": "19.4.5",
-    "jitsi-meet-electron-utils": "github:jitsi/jitsi-meet-electron-utils#v2.0.7",
+    "jitsi-meet-electron-utils": "github:jitsi/jitsi-meet-electron-utils#v2.0.12",
     "js-utils": "github:jitsi/js-utils#cf11996bd866fdb47326c59a5d3bc24be17282d4",
     "moment": "2.23.0",
     "mousetrap": "1.6.2",
@@ -145,8 +140,7 @@
     "babel-loader": "8.1.0",
     "concurrently": "5.1.0",
     "css-loader": "3.5.0",
-    "devtron": "1.4.0",
-    "electron": "9.3.1",
+    "electron": "10.1.6",
     "electron-builder": "22.7.0",
     "electron-react-devtools": "0.5.3",
     "eslint": "6.5.1",
